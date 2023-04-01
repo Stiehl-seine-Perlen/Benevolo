@@ -22,4 +22,14 @@ Follow the link to get to the documentaion for mermaid.js to create diagrams in 
     ACCOUNT {
       string name
     }
+    EVENT {
+      string title
+    }
+    TRANSANCTION {
+      string id
+    }
+    INVOICE {
+      string id
+      booleand outgoing
+    }
 ```
