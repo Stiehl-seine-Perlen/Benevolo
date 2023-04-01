@@ -10,8 +10,6 @@ To ensure our applications graphical user interfaces are design properly we agre
 - Background❓
 - XHTML❓
 
-### Buttons `<button></button>`
-
 ### Lists
 
 #### Unordered Lists `<ul></ul>`
@@ -74,7 +72,9 @@ To ensure our applications graphical user interfaces are design properly we agre
 
 #### Heading 6 `<h6></h6>`
 
-### Images `<img src="img.svg" alt="some image"/>`
+### Media
+
+#### Images `<img src="img.svg" alt="some image"/>`
 - `<img/>`
 - `<map></map>`
 - `<area shape="" coords="" alt=""/>`
@@ -87,3 +87,48 @@ To ensure our applications graphical user interfaces are design properly we agre
 </picture>
 ```
 
+#### Video `<video></video>`
+
+```html
+<video width="320" height="240" autoplay muted>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+Your browser does not support the video tag.
+</video>
+```
+
+#### Audio `<audio></audio>`
+
+```html
+<audio controls>
+  <source src="sound.ogg" type="audio/ogg">
+  <source src="sound.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+```
+
+### Forms 
+
+#### Legend `<legend></legend>`
+
+#### Fieldset `<fieldset></fieldset>`
+
+#### Label`<label></label>`
+
+#### Input `<input></input>`
+
+#### Selection `<select></select>`
+
+##### Option `<option>`
+
+#### Textarea `<textarea></textarea>`
+
+#### Output `<output></output>`
+
+#### Button `<button></button>`
+
+### Plug Ins
+
+#### Object `<object width="100%" height="500px" data="snippet.html"></object>`
+
+#### Embeded `<embed width="100%" height="500px" src="snippet.html"></embed>`
