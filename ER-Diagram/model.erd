@@ -6,19 +6,11 @@ notation=default
 entity User {
     userId: SERIAL key
     name: VARCHAR(255)
-}
-
-entity PlatformRole {
-    roleId: SERIAL key
-    name: VARCHAR(255)
+    isAdmin: BOOLEAN
 }
 
 relationship holdes {
     User[1] -> Membership[0..N]
-}
-
-relationship owns {
-    PlatformRole[1] -> User[0..N]
 }
 
 // Domain: Association
@@ -31,6 +23,10 @@ entity AssociationRole {
     associationId: INT key
     roleId: SERIAL key
     name: VARCHAR(255)
+    mayTransaction: BOOLEAN
+    mayAccount: BOOLEAN
+    mayEvent: BOOLEAN
+    many: more
 }
 
 entity Membership {
@@ -47,11 +43,16 @@ relationship needs {
     AssociationRole[1] -> Membership[0..N]
 } 
 
+relationship defines {
+    Association[1] -> AssociationRole[1..N]
+}
+
 // Domain: Events
 entity Event{
     eventId: SERIAL key
     associationId: INT key
     name: VARCHAR(255)
+    membersOnly: BOOLEAN
 }
 
 entity Participent {
@@ -65,6 +66,10 @@ relationship hosts {
 
 relationship participates {
     Participent[0..N] -> Event[0..N]
+}
+
+relationship represents {
+    User[1] -> Participent[0..N]
 }
 
 // Domain: Financial
