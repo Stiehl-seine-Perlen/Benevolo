@@ -1,6 +1,6 @@
 # club administration
 
-## How to develope
+## How to develop
 
 ### Development process
 
