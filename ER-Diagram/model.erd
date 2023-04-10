@@ -1,0 +1,105 @@
+erdiagram Model
+
+notation=default
+
+// Domain: User
+entity User {
+    userId: SERIAL key
+    name: VARCHAR(255)
+    isAdmin: BOOLEAN
+}
+
+relationship holdes {
+    User[1] -> Membership[0..N]
+}
+
+// Domain: Association
+entity Association {
+    associationId: SERIAL key
+    name: VARCHAR(255)
+}
+
+entity AssociationRole {
+    associationId: INT key
+    roleId: SERIAL key
+    name: VARCHAR(255)
+    mayTransaction: BOOLEAN
+    mayAccount: BOOLEAN
+    mayEvent: BOOLEAN
+    many: more
+}
+
+entity Membership {
+    userId: INT key
+    associationId: INT key
+    roleId: INT
+}
+
+relationship has {
+    Association[1] -> Membership[1..N]
+}
+
+relationship needs {
+    AssociationRole[1] -> Membership[0..N]
+} 
+
+relationship defines {
+    Association[1] -> AssociationRole[1..N]
+}
+
+// Domain: Events
+entity Event{
+    eventId: SERIAL key
+    associationId: INT key
+    name: VARCHAR(255)
+    membersOnly: BOOLEAN
+}
+
+entity Participent {
+    eventId: INT key
+    userId: INT key
+}
+
+relationship hosts {
+    Association[1] -> Event[0..N]
+}
+
+relationship participates {
+    Participent[0..N] -> Event[0..N]
+}
+
+relationship represents {
+    User[1] -> Participent[0..N]
+}
+
+// Domain: Financial
+entity Account {
+    accountId: SERIAL key
+    associationId: INT key
+    name: VARCHAR(255)
+}
+
+entity Transaction {
+    transactionId: SERIAL key
+    associationId: INT key
+    amount: INT
+    receiptId: INT
+}
+
+entity Receipt {
+    receiptId: SERIAL key
+}
+
+relationship books {
+    Association[1] -> Transaction[0..N]
+}
+
+relationship bookesTo {
+    Association[1] -> Account[0..N]
+}
+
+relationship proofes {
+    Receipt[1] -> Transaction[1..N]
+}
+
+
